@@ -1,0 +1,26 @@
+{
+  "name": "pitaya",
+  "version": "0.0.1",
+  "description": "",
+  "main": "pitaya.js",
+  "bin": {
+    "pitaya": "./index.js",
+    "py": "./index.js"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BubbleTeam/pitaya.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/BubbleTeam/pitaya/issues"
+  },
+  "homepage": "https://github.com/BubbleTeam/pitaya#readme",
+  "dependencies": {
+    "yargs": "^9.0.1"
+  }
+}
