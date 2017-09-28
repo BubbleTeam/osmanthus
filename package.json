@@ -1,10 +1,10 @@
 {
-  "name": "pitaya",
+  "name": "persimmon",
   "version": "0.0.1",
   "description": "",
-  "main": "pitaya.js",
+  "main": "persimmon.js",
   "bin": {
-    "pitaya": "./index.js",
+    "persimmon": "./index.js",
     "py": "./index.js"
   },
   "scripts": {
@@ -12,14 +12,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/BubbleTeam/pitaya.git"
+    "url": "git+https://github.com/BubbleTeam/persimmon.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/BubbleTeam/pitaya/issues"
+    "url": "https://github.com/BubbleTeam/persimmon/issues"
   },
-  "homepage": "https://github.com/BubbleTeam/pitaya#readme",
+  "homepage": "https://github.com/BubbleTeam/persimmon#readme",
   "dependencies": {
     "yargs": "^9.0.1"
   }
