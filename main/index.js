@@ -1,14 +1,20 @@
 const spawn = require('cross-spawn');
 const path = require('path');
+const processEnvsHandler = require('./handlers/processEnvsHandler');
+const mcssHandler = require('./handlers/mcssHandler');
 
 module.exports = (env, url, local) => {
     if(env) {
-        return false;
+        processEnvs('env');
+        return;
     }
     if(url) {
-        return false;
+        processEnvs('url');
+        return;
     }
     if(local) {
-        return false;
+        processEnvs('local');
+        return;
     }
+    mcssHandler();
 }

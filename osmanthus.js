@@ -1,5 +1,8 @@
+const path = require('path');
+
 module.exports = {
-    envs: {
+    // 测试环境地址
+    environments: {
         'test': 'http://10.165.124.39:8188',
         'dev': 'http://10.165.126.203:8180',
         'feature1': 'http://10.165.124.109:8180',
@@ -11,6 +14,29 @@ module.exports = {
         'feature7': 'http://10.165.127.44:8180',
         'feature8': 'http://10.165.126.226:8180'
     },
+    // mockserver 端口号
     mockPort: 8020,
-    mockPath: './mocks'
+    // mock data 路径
+    mockPath: './mocks',
+    // 要修改的环境变量，base为通用的，local表示本地mock模式下特有的等等.
+    processEnvs: {
+        base: {
+            NODE_CONFIG_DIR: path.join(__dirname, './my_config')
+        },
+        local: {
+
+        },
+        env: {
+
+        },
+        url: {
+
+        }
+    },
+    // mcss启动参数
+    mcss: {
+        execPath: './node_modules/.bin/mcss',
+        mcssRoot: '../src/main/resources/public/src/mcss/mcss.json',
+        params: ['-c']
+    }
 }
