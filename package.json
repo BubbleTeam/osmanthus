@@ -2,10 +2,10 @@
   "name": "osmanthus",
   "version": "0.1.0",
   "description": "",
-  "main": "osmanthus.js",
+  "main": "index.js",
   "bin": {
     "osmanthus": "./index.js",
-    "oss": "./index.js"
+    "os": "./index.js"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
