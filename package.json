@@ -1,25 +1,25 @@
 {
-  "name": "persimmon",
+  "name": "osmanthus",
   "version": "0.1.0",
   "description": "",
-  "main": "persimmon.js",
+  "main": "osmanthus.js",
   "bin": {
-    "persimmon": "./index.js",
-    "py": "./index.js"
+    "osmanthus": "./index.js",
+    "oss": "./index.js"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/BubbleTeam/persimmon.git"
+    "url": "git+https://github.com/BubbleTeam/osmanthus.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/BubbleTeam/persimmon/issues"
+    "url": "https://github.com/BubbleTeam/osmanthus/issues"
   },
-  "homepage": "https://github.com/BubbleTeam/persimmon#readme",
+  "homepage": "https://github.com/BubbleTeam/osmanthus#readme",
   "dependencies": {
     "yargs": "^9.0.1"
   }

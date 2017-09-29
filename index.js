@@ -3,7 +3,7 @@
 const yargs = require('yargs');
 const main = require('./main')
 const argv = yargs
-    .usage('Usage: py -e feature1 | py -u http://10.240.177.151:8020 | py -l')
+    .usage('Usage: oss -e feature1 | oss -u http://10.240.177.151:8020 | oss -l')
     .option('env', {
         alias: 'e',
         describe: 'specify a test environment to connect'
