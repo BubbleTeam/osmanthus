@@ -18,14 +18,11 @@ module.exports = {
     // path of app.js
     appPath: path.join(__dirname, 'app.js'),
 
-    // path of mockServer.js
-    mockServerPath: path.join(__dirname, 'mockServer.js')
-
     // mockserver 端口号
     mockPort: 8020,
 
     // mock data 路径
-    mockPath: './mocks',
+    mockPath: path.join(__dirname, './mocks'),
 
     // 要修改的环境变量，base为通用的，local表示本地mock模式下特有的等等. 通常情况用base的就够了。
     processEnvs: {

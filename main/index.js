@@ -1,16 +1,14 @@
 const spawn = require('cross-spawn');
 const path = require('path');
+const cwd = process.cwd();
 const processEnvsHandler = require('./handlers/processEnvsHandler');
 const mcssHandler = require('./handlers/mcssHandler');
+const mockServer = require('./handlers/mockServer');
 const config = require(path.join(cwd, 'osmanthus.js'));
 const { environments, mockPort, appPath, mockServerPath } = config;
 
 const bootServer = (url) => {
     spawn('node', [appPath, `--NODE_CONFIG={ remoteServer: ${url} }`], {stdio:[0, 1, 2]});
-}
-
-const bootMockServer = () => {
-    spawn('node', [mockServerPath], {stdio:[0, 1, 2]})
 }
 
 module.exports = (env, url, local) => {
@@ -32,6 +30,6 @@ module.exports = (env, url, local) => {
 
     // 默认本地mock模式
     processEnvsHandler('local');
-    bootServer(`http:127.0.0.1:${mockPort}`);
-    bootMockServer();
+    bootServer(`http://127.0.0.1:${mockPort}`);
+    mockServer();
 }
