@@ -1,11 +1,12 @@
 const spawn = require('cross-spawn');
 const path = require('path');
 const cwd = process.cwd();
-const config = require(path.join(cwd, 'osmanthus.js'));
+const { mcss } = require(path.join(cwd, 'osmanthus.js'));
 
 module.exports = () => {
-    let { exexecPath, mcssRoot, params } = config.processEnvs.mcss;
-    if (exexecPath && mcssRoot) {
-        spawn(exexecPath, mcssRoot, ...params);
+    let { execPath, mcssRoot, params } = mcss;
+
+    if (execPath && mcssRoot) {
+        spawn(execPath, [...params, mcssRoot], {stdio:[0,1,2]});
     }
 }

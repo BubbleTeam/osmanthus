@@ -1,14 +1,14 @@
 const spawn = require('cross-spawn');
 const path = require('path');
 const cwd = process.cwd();
-const processEnvsHandler = require('./handlers/processEnvsHandler');
-const mcssHandler = require('./handlers/mcssHandler');
-const mockServer = require('./handlers/mockServer');
+const processEnvsHandler = require('../handlers/processEnvsHandler');
+const mcssHandler = require('../handlers/mcssHandler');
+const mockServer = require('../handlers/mockServer');
 const config = require(path.join(cwd, 'osmanthus.js'));
 const { environments, mockPort, appPath, mockServerPath } = config;
 
 const bootServer = (url) => {
-    spawn('node', [appPath, `--NODE_CONFIG={ remoteServer: ${url} }`], {stdio:[0, 1, 2]});
+    spawn('node', ['app.js','--NODE_CONFIG={"remoteServer":"' + url + '"}'], {stdio:[0, 1, 2]});
 }
 
 module.exports = (env, url, local) => {

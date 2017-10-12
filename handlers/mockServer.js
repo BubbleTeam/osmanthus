@@ -5,10 +5,10 @@ const cwd = process.cwd();
 const { mockPath, mockPort } = require(path.join(cwd, 'osmanthus.js'));
 
 module.exports = () => {
-    let app = Koa();
+    let app = new Koa();
 
-    app.use(async (next) => {
-        var file_path = `/${this.method.toLowerCase()}${this.path}`;
+    app.use(async (ctx, next) => {
+        var file_path = `/${ctx.method.toLowerCase()}${ctx.path}`;
         if (file_path[file_path.length - 1] == '/') {
             file_path += 'index.json';
         }
@@ -26,8 +26,10 @@ module.exports = () => {
             if (data[key] !== undefined) data[key] = base[key];
         }
 
-        this.body = data;
-        this.type = 'json';
+        ctx.body = data;
+        ctx.type = 'json';
+        
+        await next();
     });
 
     app.listen(mockPort);

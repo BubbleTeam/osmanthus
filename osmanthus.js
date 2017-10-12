@@ -42,8 +42,8 @@ module.exports = {
 
     // mcss启动参数
     mcss: {
-        execPath: './node_modules/.bin/mcss',
-        mcssRoot: '../src/main/resources/public/src/mcss/mcss.json',
+        execPath: path.join(__dirname, './node_modules/.bin/mcss'),
+        mcssRoot: path.join(__dirname, '../src/main/resources/public/src/mcss/mcss.json'),
         params: ['-c']
     }
 }
