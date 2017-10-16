@@ -16,7 +16,6 @@ module.exports = class Watcher {
         })
 
         watcher.on('change', (filepath) => {
-            console.log(`${filepath} has changed`)
             this.wss.broadcast({
                 type: 'hotReload',
                 payload: path.basename(filepath)

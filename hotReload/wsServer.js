@@ -25,10 +25,10 @@ module.exports = class WSServer {
         console.log(`WebSocket server started on port ${this.port}`);
 
         this.wss.on('connection', (ws, req) => {
-            console.log('connected');
+            console.log('WebSocket server connected');
 
             ws.on('message', (message) => {
-                console.log('received: %s', message);
+                console.log('WebSocket server received: %s', message);
             });
         });
     }
