@@ -5,7 +5,7 @@ const processEnvs = require('../lib/processEnvs');
 const bootMcss = require('../lib/mcss');
 const mockServer = require('../lib/mockServer');
 const config = require(path.join(cwd, 'osmanthus.js'));
-const hotReload = require('../livereload');
+const hotReload = require('../hotReload');
 const { environments, mockPort, appPath, mockServerPath } = config;
 const WS_PORT = 9110;
 

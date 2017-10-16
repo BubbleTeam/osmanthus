@@ -45,5 +45,11 @@ module.exports = {
         execPath: path.join(__dirname, './node_modules/.bin/mcss'),
         mcssRoot: path.join(__dirname, '../src/main/resources/public/src/mcss/mcss.json'),
         params: ['-c']
-    }
+    },
+
+    // hotload监听的文件
+    watch: [
+        path.join(__dirname, '../src/main/resources/public/src'),
+        path.join(__dirname, '../src/main/resources/public/templates')
+    ]
 }

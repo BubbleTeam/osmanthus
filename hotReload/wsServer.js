@@ -1,4 +1,5 @@
-const { Server } = require('ws');
+const WebSocket = require('ws');
+const Server = WebSocket.Server;
 
 module.exports = class WSServer {
     constructor({ port }) {
@@ -21,7 +22,7 @@ module.exports = class WSServer {
 
     start() {
         this.wss = this.createWebSocket({ port: this.port });
-        console.log(this.wss, 'wsswss');
+        console.log(`WebSocket server started on port ${this.port}`);
 
         this.wss.on('connection', (ws, req) => {
             console.log('connected');
@@ -29,7 +30,10 @@ module.exports = class WSServer {
             ws.on('message', (message) => {
                 console.log('received: %s', message);
             });
-            ws.send('something');
         });
+    }
+
+    broadcast(payload) {
+        this.wss.broadcast(payload);
     }
 }

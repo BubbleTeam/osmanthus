@@ -3,7 +3,7 @@
 (function() {
     var __OSS_EVENT_BUS__ = window.__OSS_EVENT_BUS__;
 
-    __OSS_EVENT_BUS__.on('livereload', function(filename) {
+    __OSS_EVENT_BUS__.on('hotReload', function(filename) {
         if (/\.css/.test(filename)) {
             updateStyle(filename);
         } else {
