@@ -13,12 +13,14 @@
         return;
     }
 
+    var connect_times = 0;   // 尝试连接的次数
+
     function openSocket() {
         try {
             var socket = new WebSocket(
                 (location.protocol === 'https:' ? 'wss:' : 'ws:') +
                     '//' +
-                    location.host
+                    location.hostname + ':9110'
             );
             bindEventSocket(socket);
         } catch (e) {}
@@ -26,6 +28,7 @@
 
     function bindEventSocket(socket) {
         socket.onmessage = function(event) {
+            console.log('received', event.data);
             var data;
             try {
                 data = JSON.parse(event.data);
@@ -42,8 +45,12 @@
         };
 
         socket.onclose = function() {
+            connect_times += 1;
             console.log('[WebSocket] closed');
-            setTimeout(openSocket, 1000);
+            if(connect_times < 3) {
+                setTimeout(openSocket, 1000);
+            }
+            
         };
     }
 

@@ -5,6 +5,7 @@ const processEnvs = require('../lib/processEnvs');
 const bootMcss = require('../lib/mcss');
 const mockServer = require('../lib/mockServer');
 const config = require(path.join(cwd, 'osmanthus.js'));
+const hotReload = require('../livereload');
 const { environments, mockPort, appPath, mockServerPath } = config;
 
 const bootServer = (url) => {
@@ -45,5 +46,9 @@ module.exports = (env, url, local) => {
     }
 
     bootServer(localUrl);
-    mockServer(targetUrl);
+    const mockApp = mockServer(targetUrl);    // 返回mockServer app
+
+    // 热更新
+    const reload = new hotReload({ server: mockApp , watchDirs: []});
+    reload.start();
 }

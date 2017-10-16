@@ -1,13 +1,13 @@
+const WSServer = require('./wsServer');
+
 module.exports = class HotReload {
-    constructor ({ app }) {
-        this.app = app;
-    },
-
-    init () {
-        this.serveClient();
+    constructor({ server, watchDirs = []}) {
+        this.server = server;
+        this.watchDirs = watchDirs;
     }
-
-    serveClient() {
-        
+    
+    start() {
+        const wss = new WSServer({ server: this.server });
+        wss.start();
     }
 }
