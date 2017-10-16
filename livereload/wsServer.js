@@ -1,12 +1,12 @@
 const { Server } = require('ws');
 
 module.exports = class WSServer {
-    constructor({ server }) {
-        this.server = server;
+    constructor({ port }) {
+        this.port = port;
     }
 
-    createWebSocket({ server }) {
-        const wss = new Server({ port: 9110 });
+    createWebSocket({ port }) {
+        const wss = new Server({ port });
 
         wss.broadcast = data => {
             data = JSON.stringify(data);
@@ -20,11 +20,11 @@ module.exports = class WSServer {
     }
 
     start() {
-        this.wss = this.createWebSocket({ server: this.server });
+        this.wss = this.createWebSocket({ port: this.port });
         console.log(this.wss, 'wsswss');
 
         this.wss.on('connection', (ws, req) => {
-            console.log('connected, 1111111111111111111111111111111111');
+            console.log('connected');
 
             ws.on('message', (message) => {
                 console.log('received: %s', message);
