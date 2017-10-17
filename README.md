@@ -1,22 +1,35 @@
-# osmanthus
-> Mock server and hotreload.
+> osmanthus(桂花)这个名字的由来：公司大神的框架Pomelo(柚子), 于是也想弄个水果当名字，不想水果太火热了，npm上基本都注册完了。那就用花吧，刚好园区里的桂花开了，就它了。
 
-Osmanthus桂花，开发的时候，园区里的桂花开了，很香，因而得名。  
+##### osmanthus？这是个什么东东？
+osmanthus是一个mock server，提供基础的mock功能和hotreload。
 
-- 命令启动POP工程，可以选择本地mock模式、连接测试环境模式、连接某个url模式。  
-- 监听文件变化自动更新css或者刷新页面。
-- 支持mock文件json里带注释，测试不同情况的时候，再也不用删了加，加了删。
+##### 开发的原因
+POP现有的基于node中间层的业务架构，将mockserver的功能耦合在一起，不是很优雅。而且没有热更新功能，影响开发体验。
 
-#### Usage：
+##### 提供的功能
+1. 命令行工具，通过参数来选择本地mock模式、连接测试环境模式、连接某个url模式。
+2. 监听文件变化，自动更新css或者刷新页面。
+3. 支持mock文件json里带注释，测试各种不同情况的时候，再也不用删了加，加了删。
 
-##### 1.全局安装osmanthus
+##### 接入步骤
+1.全局安装osmanthus
 ```bash
 $ npm i osmanthus -g
 ```
-##### 2.在-web/app 或者 cms-web/app下新增osmanthus.js配置文件，格式参考当前目录下的osmanthus.js
+2.工程app目录下添加osmanthus.js配置文件, 参照当前目录下的osmanthus.js。
+layout.html中添加：
+```html
+<!-- @IGNORE -->
+<script src="http://localhost:8020/__hotReload.js" id="__hotReload"></script>
+<!-- /@IGNORE -->
 
-##### 3.在pop-web/app 或者 cms-web/app下执行命令如下命令。
+```
 
+3.命令行参数启动工程，例如：oss -e feature1
+
+
+##### 命令行参数
+直接贴上oss -h的说明
 ```
 Usage: oss -e feature1 | oss -u http://10.240.177.151:8020 | oss -l | oss
 
