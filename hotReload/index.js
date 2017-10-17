@@ -14,7 +14,9 @@ module.exports = class HotReload {
         const wss = new WSServer({ server: this.server });
         wss.start();
 
-        const watches = new watcher({ files: watch, wss });
-        watches.start();
+        if(watch.isWatch) {
+            const watches = new watcher({ files: watch.files, wss });
+            watches.start();
+        }
     }
 }

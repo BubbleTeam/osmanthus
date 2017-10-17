@@ -47,9 +47,15 @@ module.exports = {
         params: ['-c']
     },
 
-    // hotload监听的文件
-    watch: [
-        path.join(__dirname, '../src/main/resources/public/src'),
-        path.join(__dirname, '../src/main/resources/public/templates')
-    ]
+    // hotreload配置
+    watch: {
+        // 是否启动hotreload
+        isWatch: true,
+
+        // 监听的文件
+        files: [
+            path.join(__dirname, '../src/main/resources/public/src'),
+            path.join(__dirname, '../src/main/resources/public/templates')
+        ]
+    }
 }
