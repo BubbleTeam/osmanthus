@@ -24,8 +24,6 @@ module.exports = class WSServer {
         this.wss = this.createWebSocket({ server: this.server });
 
         this.wss.on('connection', (ws, req) => {
-            console.log('WebSocket server connected');
-
             ws.on('message', (message) => {
                 console.log('WebSocket server received: %s', message);
             });

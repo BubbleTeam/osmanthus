@@ -14,13 +14,15 @@
     }
 
     var connect_times = 0;   // 尝试连接的次数
+    var elem = document.getElementById('__hotReload');
+    var mockPort = elem && elem.getAttribute('src').match(/\d+/) || 8020;
 
     function openSocket() {
         try {
             var socket = new WebSocket(
                 (location.protocol === 'https:' ? 'wss:' : 'ws:') +
                     '//' +
-                    location.hostname + ':8020'
+                    location.hostname + ':' + mockPort
             );
             bindEventSocket(socket);
         } catch (e) {}
