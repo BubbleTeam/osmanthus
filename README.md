@@ -1,7 +1,13 @@
 # osmanthus
 > Mock server and hotreload.
 
-Osmanthus桂花，开发的时候，园区里的桂花开了，很香，因而得名。
+Osmanthus桂花，开发的时候，园区里的桂花开了，很香，因而得名。  
+
+- 命令启动POP工程，可以选择本地mock模式、连接测试环境模式、连接某个url模式。  
+- 监听文件变化自动更新css或者刷新页面。
+- 支持mock文件json里带注释，测试不同情况的时候，再也不用删了加，加了删。
+
+#### Usage：
 
 ##### 1.全局安装osmanthus
 ```bash
