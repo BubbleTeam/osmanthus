@@ -7,7 +7,6 @@ const mockServer = require('../lib/mockServer');
 const config = require(path.join(cwd, 'osmanthus.js'));
 const hotReload = require('../hotReload');
 const { environments, mockPort, appPath, mockServerPath } = config;
-const WS_PORT = 9110;
 
 const bootServer = (url) => {
     spawn('node', ['app.js','--NODE_CONFIG={"remoteServer":"' + url + '"}'], {stdio:[0, 1, 2]});
@@ -46,10 +45,10 @@ module.exports = (env, url, local) => {
         processEnvs('local');
     }
 
-    bootServer(localUrl);     // 启动服务
-    mockServer(targetUrl);    // 启动mockServer
+    bootServer(localUrl);                  // 启动服务
+    let server = mockServer(targetUrl);    // 启动mockServer
 
     // 热更新
-    const reload = new hotReload({ port: WS_PORT , watchDirs: []});
+    const reload = new hotReload({ server, watchDirs: []});
     reload.start();
 }

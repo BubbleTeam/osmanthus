@@ -20,7 +20,7 @@
             var socket = new WebSocket(
                 (location.protocol === 'https:' ? 'wss:' : 'ws:') +
                     '//' +
-                    location.hostname + ':9110'
+                    location.host
             );
             bindEventSocket(socket);
         } catch (e) {}

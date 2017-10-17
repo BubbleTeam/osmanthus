@@ -5,13 +5,13 @@ const cwd = process.cwd();
 const { watch } = require(path.join(cwd, 'osmanthus.js'));
 
 module.exports = class HotReload {
-    constructor({ port, watchDirs = []}) {
-        this.port = port;
+    constructor({ server, watchDirs = []}) {
+        this.server = server;
         this.watchDirs = watchDirs;
     }
     
     start() {
-        const wss = new WSServer({ port: this.port });
+        const wss = new WSServer({ server: this.server });
         wss.start();
 
         const watches = new watcher({ files: watch, wss });
