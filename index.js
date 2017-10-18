@@ -2,7 +2,7 @@
 
 const yargs = require('yargs');
 const argv = yargs
-    .usage('Usage: oss -e feature1 | oss -u http://10.240.177.151:8020 | oss -l')
+    .usage('Usage: oss | oss -l | oss -e feature1 | oss -u http://10.240.177.151:8020')
     .version()
     .alias('v', 'version')
     // 代理到测试环境
@@ -18,7 +18,7 @@ const argv = yargs
     // 本地mock
     .alias('local', 'l')
     .boolean('l')
-    .describe('l', 'local mock mode')
+    .describe('l', 'local mode,no mock server,for backend')
     .alias('h', 'help')
     .help('h')
     .argv;
