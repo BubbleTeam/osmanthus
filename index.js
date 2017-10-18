@@ -1,9 +1,10 @@
 #!/usr/bin/env node
 
 const yargs = require('yargs');
-const main = require('./main')
 const argv = yargs
     .usage('Usage: oss -e feature1 | oss -u http://10.240.177.151:8020 | oss -l')
+    .version()
+    .alias('v', 'version')
     // 代理到测试环境
     .option('env', {
         alias: 'e',
@@ -18,9 +19,11 @@ const argv = yargs
     .alias('local', 'l')
     .boolean('l')
     .describe('l', 'local mock mode')
-    .alias('help', 'h')
+    .alias('h', 'help')
     .help('h')
     .argv;
 
-let { env, url, local } = argv;
-main(env, url, local);
+let { env, url, local, version, help } = argv;
+
+if(version || help) return;
+require('./main')(env, url, local);
