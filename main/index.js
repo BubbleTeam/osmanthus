@@ -31,6 +31,7 @@ module.exports = (env, url, local) => {
 
     // 仅启动app.js
     if(local) {
+        processEnvs();
         bootServer(localUrl);
         return;
     }
