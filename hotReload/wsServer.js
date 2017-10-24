@@ -1,17 +1,18 @@
 const WebSocket = require('ws');
-const Server = WebSocket.Server;
+
+const { Server } = WebSocket;
 
 module.exports = class WSServer {
     constructor({ server }) {
         this.server = server;
     }
 
-    createWebSocket({ server }) {
+    static createWebSocket({ server }) {
         const wss = new Server({ server });
 
-        wss.broadcast = data => {
+        wss.broadcast = (data) => {
             data = JSON.stringify(data);
-            wss.clients.forEach(client => {
+            wss.clients.forEach((client) => {
                 if (client.readyState === WebSocket.OPEN) {
                     client.send(data);
                 }
@@ -33,4 +34,4 @@ module.exports = class WSServer {
     broadcast(payload) {
         this.wss.broadcast(payload);
     }
-}
+};

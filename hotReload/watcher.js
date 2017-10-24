@@ -2,7 +2,7 @@ const chokidar = require('chokidar');
 const path = require('path');
 
 module.exports = class Watcher {
-    constructor({ files, wss}) {
+    constructor({ files, wss }) {
         this.watchFiles = files;
         this.wss = wss;
     }
@@ -13,13 +13,13 @@ module.exports = class Watcher {
             ignoreInitial: true,
             interval: 300,
             binaryInterval: 300
-        })
+        });
 
         watcher.on('change', (filepath) => {
             this.wss.broadcast({
                 type: 'hotReload',
                 payload: path.basename(filepath)
             });
-        })
+        });
     }
-}
+};

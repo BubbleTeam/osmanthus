@@ -8,7 +8,11 @@
     "oss": "./index.js"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "unit_test": "./node_modules/.bin/istanbul cover ./node_modules/mocha/bin/_mocha test/index.js",
+    "coverage": "cat ./coverage/lcov.info | coveralls",
+    "lint": "eslint ./",
+    "fix": "exlint --fix ./",
+    "test": "npm run lint && npm run unit_test"
   },
   "repository": {
     "type": "git",
@@ -30,5 +34,14 @@
     "koa-static": "^4.0.1",
     "ws": "^3.2.0",
     "yargs": "^9.0.1"
+  },
+  "devDependencies": {
+    "eslint": "^4.9.0",
+    "eslint-config-airbnb": "^16.1.0",
+    "eslint-plugin-import": "^2.7.0",
+    "eslint-plugin-jsx-a11y": "^6.0.2",
+    "eslint-plugin-react": "^7.2.1",
+    "istanbul": "^0.4.5",
+    "mocha": "^4.0.1"
   }
 }

@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 // https://github.com/developit/mitt
 
 //

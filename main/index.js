@@ -1,16 +1,25 @@
 const spawn = require('cross-spawn');
 const path = require('path');
-const cwd = process.cwd();
 const processEnvs = require('../lib/processEnvs');
 const bootMcss = require('../lib/mcss');
 const mockServer = require('../lib/mockServer');
-const config = require(path.join(cwd, 'osmanthus.js'));
-const hotReload = require('../hotReload');
-const { environments, mockPort, appPath, mockServerPath } = config;
 
+const cwd = process.cwd();
+const config = require(path.join(cwd, 'osmanthus.js'));
+const HotReload = require('../hotReload');
+
+const { 
+    environments, 
+    mockPort, 
+    appPath, 
+    mockServerPath 
+} = config;
+
+/* eslint-disable */
 const bootServer = (url) => {
-    spawn('node', ['app.js','--NODE_CONFIG={"remoteServer":"' + url + '"}'], {stdio:[0, 1, 2]});
-}
+    spawn('node', ['app.js', '--NODE_CONFIG={"remoteServer":"' + url + '"}'], { stdio: [0, 1, 2] });
+};
+/* eslint-enable */
 
 /*
     与pop之前的差异：
@@ -24,21 +33,21 @@ module.exports = (env, url, local) => {
         return;
     }
 
-    let localUrl = `http://127.0.0.1:${mockPort}`
+    let localUrl = `http://127.0.0.1:${mockPort}`;
 
     // bootMcss
     bootMcss();
 
     // 仅启动app.js
-    if(local) {
+    if (local) {
         processEnvs();
         bootServer(localUrl);
         return;
     }
 
     // 连接测试环境或者指定url, 代理到url
-    let targetUrl
-    if(env || url) {
+    let targetUrl;
+    if (env || url) {
         targetUrl = environments[env] || url;
         processEnvs(env ? 'env' : 'url');
     } else {
@@ -50,6 +59,6 @@ module.exports = (env, url, local) => {
     let server = mockServer(targetUrl);    // 启动mockServer
 
     // 热更新
-    const reload = new hotReload({ server, watchDirs: []});
+    const reload = new HotReload({ server, watchDirs: [] });
     reload.start();
-}
+};

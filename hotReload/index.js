@@ -1,11 +1,12 @@
 const WSServer = require('./wsServer');
-const watcher = require('./watcher');
+const Watcher = require('./watcher');
 const path = require('path');
+
 const cwd = process.cwd();
 const { watch } = require(path.join(cwd, 'osmanthus.js'));
 
 module.exports = class HotReload {
-    constructor({ server, watchDirs = []}) {
+    constructor({ server, watchDirs = [] }) {
         this.server = server;
         this.watchDirs = watchDirs;
     }
@@ -14,9 +15,9 @@ module.exports = class HotReload {
         const wss = new WSServer({ server: this.server });
         wss.start();
 
-        if(watch.isWatch) {
-            const watches = new watcher({ files: watch.files, wss });
+        if (watch.isWatch) {
+            const watches = new Watcher({ files: watch.files, wss });
             watches.start();
         }
     }
-}
+};
