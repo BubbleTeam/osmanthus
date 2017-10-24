@@ -1,7 +1,8 @@
 #!/usr/bin/env node
 
 const yargs = require('yargs');
-const argv = yargs
+
+const { argv } = yargs
     .usage('Usage: oss | oss -l | oss -e feature1 | oss -u http://10.240.177.151:8020')
     .version()
     .alias('v', 'version')
@@ -20,10 +21,12 @@ const argv = yargs
     .boolean('l')
     .describe('l', 'local mode,no mock server,for backend')
     .alias('h', 'help')
-    .help('h')
-    .argv;
+    .help('h');
 
-let { env, url, local, version, help } = argv;
+let { 
+    env, url, local, version, help 
+} = argv;
 
-if(version || help) return;
-require('./main')(env, url, local);
+if (!version && !help) {
+    require('./main')(env, url, local);
+}
