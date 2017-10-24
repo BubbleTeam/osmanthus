@@ -1,3 +1,6 @@
+[![NPM version][npm-image]][npm-url]
+[![build status][travis-image]][travis-url]
+
 > osmanthus(桂花)这个名字的由来：公司大神的框架Pomelo(柚子), 于是也想弄个水果当名字，不想水果太火热了，npm上基本都注册完了。那就用花吧，刚好园区里的桂花开了，就它了。
 
 ##### osmanthus？这是个什么东东？
@@ -40,3 +43,7 @@ Usage: oss -e feature1 | oss -u http://10.240.177.151:8020 | oss -l | oss
   -h           显示帮助信息                                               [布尔]
   --local, -l  local mode                                                [布尔]
 ```
+[npm-image]: https://img.shields.io/npm/v/osmanthus.svg?style=flat-square
+[npm-url]: https://www.npmjs.com/package/osmanthus
+[travis-image]:https://img.shields.io/travis/BubbleTeam/osmanthus.svg
+[travis-url]: https://travis-ci.org/BubbleTeam/osmanthus
