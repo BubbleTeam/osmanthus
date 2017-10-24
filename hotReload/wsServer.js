@@ -7,7 +7,7 @@ module.exports = class WSServer {
         this.server = server;
     }
 
-    static createWebSocket({ server }) {
+    createWebSocket({ server }) {
         const wss = new Server({ server });
 
         wss.broadcast = (data) => {
