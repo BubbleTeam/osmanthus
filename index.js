@@ -16,6 +16,11 @@ const { argv } = yargs
         alias: 'u',
         describe: 'specify an url to connect'
     })
+    // 代理到某个url
+    .option('port', {
+        alias: 'p',
+        describe: 'specify a port for mock server'
+    })
     // 本地mock
     .alias('local', 'l')
     .boolean('l')
@@ -24,9 +29,9 @@ const { argv } = yargs
     .help('h');
 
 let { 
-    env, url, local, version, help 
+    env, url, port, local, version, help 
 } = argv;
 
 if (!version && !help) {
-    require('./main')(env, url, local);
+    require('./main')(env, url, port, local);
 }

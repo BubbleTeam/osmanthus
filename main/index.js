@@ -27,7 +27,7 @@ const bootServer = (url) => {
     - 现在：总是启动mockserver，app.js的remoteServer固定指定http://127.0.0.1:8020，仅当oss -l的时候仅启动app.js，给后端调试用。
  */
 
-module.exports = (env, url, local) => {
+module.exports = (env, url, port, local) => {
     if (!config) {
         console.log('missing osmanthus.js');
         return;
@@ -55,8 +55,8 @@ module.exports = (env, url, local) => {
         processEnvs('local');
     }
 
-    bootServer(localUrl);                  // 启动服务
-    let server = mockServer(targetUrl);    // 启动mockServer
+    bootServer(localUrl);                        // 启动服务
+    let server = mockServer(targetUrl, port);    // 启动mockServer
 
     // 热更新
     const reload = new HotReload({ server, watchDirs: [] });
