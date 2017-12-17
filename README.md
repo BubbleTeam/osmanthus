@@ -44,6 +44,32 @@ Usage: oss -e feature1 | oss -u http://10.240.177.151:8020 | oss -l | oss
   -h           显示帮助信息                                               [布尔]
   --local, -l  local mode                                                [布尔]
 ```
+
+##### mock数据路径说明
+根据osmanthus.js里配置的mockPath，作为mock data的根路径，根据请求的方法，里面分get，post等文件夹，和一个\__base.json。 
+
+![](https://haitao.nos.netease.com/519cdc7a-701e-4849-bee8-effc0b7ad80d.png)
+
+例如一个get请求，/goods/detail 会定位到 get/goods/detail.json  
+__base.json是公用数据，会和每一个请求的数据merge。  
+
+如果找不到get/goods/detail.json，但是有get/goods/detail.js的话，就会将该js的返回值作为结果。这个方法的入参是koa里的ctx对象，方便用户获取请求的一些参数。来根据不同的清楚，返回不同的结果。示例如下：
+```javascript
+const fs = require('fs');
+const durian = require('durian');
+const path = require('path');
+
+module.exports = function(ctx) {
+    let { activityType } = ctx.query;
+    let filePath = path.join(__dirname, `popDetail/popDetail${activityType}.json`);
+
+    console.log(filePath);
+    return durian.parse(fs.readFileSync(filePath).toString());
+};
+```
+
+
+
 [npm-image]: https://img.shields.io/npm/v/osmanthus.svg?style=flat-square
 [npm-url]: https://www.npmjs.com/package/osmanthus
 [travis-image]:https://img.shields.io/travis/BubbleTeam/osmanthus.svg
