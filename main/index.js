@@ -1,5 +1,6 @@
 const spawn = require('cross-spawn');
 const path = require('path');
+const chalk = require('chalk');
 const processEnvs = require('../lib/processEnvs');
 const bootMcss = require('../lib/mcss');
 const mockServer = require('../lib/mockServer');
@@ -30,6 +31,13 @@ const bootServer = (url) => {
 module.exports = (env, url, port, local) => {
     if (!config) {
         console.log('missing osmanthus.js');
+        return;
+    }
+
+    // 仅输入命令oss -e的时候，打印出environments，方便选择。
+    if(env === true) {
+        console.log(chalk.yellow('oss environments:'));
+        console.log(config.environments);
         return;
     }
 
