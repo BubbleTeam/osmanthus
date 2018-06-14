@@ -3,6 +3,7 @@ const path = require('path');
 const chalk = require('chalk');
 const processEnvs = require('../lib/processEnvs');
 const bootMcss = require('../lib/mcss');
+const bootCommands = require('../lib/commands');
 const mockServer = require('../lib/mockServer');
 
 const cwd = process.cwd();
@@ -45,6 +46,8 @@ module.exports = (env, url, port, local) => {
 
     // bootMcss
     bootMcss();
+
+    bootCommands();
 
     // 仅启动app.js
     if (local) {
